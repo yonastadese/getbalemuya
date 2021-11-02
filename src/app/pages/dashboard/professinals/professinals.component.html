@@ -1,0 +1,71 @@
+
+<mat-form-field appearance="fill">
+    <mat-label>Filter Professions</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Cleaning" [disabled]="isLoading">
+    <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>
+
+<div *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+</div>
+
+<div class="mat-elevation-z8" *ngIf="!isLoading">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="fullName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="hover-normal"> Full Name </th>
+            <td mat-cell *matCellDef="let row" class="cursorPointer" (click)="open(row.id)">
+                <span class="primary-color">
+                    {{row.fullName}}
+                </span>
+            </td>
+        </ng-container>
+
+        <!-- Created Column -->
+        <ng-container matColumnDef="created">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="hover-normal"> Registerd on </th>
+            <td mat-cell *matCellDef="let row" class="cursorPointer" (click)="open(row.id)">
+                <span>
+                    {{row.created | date}}
+                </span>
+            </td>
+        </ng-container>
+
+        <!-- Phone Column -->
+        <ng-container matColumnDef="phone">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="hover-normal"> Phone Number </th>
+            <td mat-cell *matCellDef="let row" class="cursorPointer" (click)="open(row.id)">
+                <span class="bold">
+                    {{row.phone}}
+                </span>
+            </td>
+        </ng-container>
+
+        <!-- Experiance Column -->
+        <ng-container matColumnDef="experiance">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="hover-normal"> Experiance </th>
+            <td mat-cell *matCellDef="let row" class="cursorPointer" (click)="open(row.id)">
+                <span>
+                    {{row.experiance}}
+                </span>
+            </td>
+        </ng-container>
+
+        <!-- Profession Column -->
+        <ng-container matColumnDef="profession">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="hover-normal"> Profession </th>
+            <td mat-cell *matCellDef="let row" class="cursorPointer" (click)="open(row.id)">
+                <span class="bold">
+                    {{row.profession}}
+                </span>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+        </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

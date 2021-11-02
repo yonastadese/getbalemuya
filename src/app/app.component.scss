@@ -1,0 +1,114 @@
+.page-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    mat-toolbar-row {
+        background-color: white;
+        // box-shadow: inset 0.5px 5px 1px #eaeaea;
+        // box-shadow: inset 0 -5px 10px #eaeaea;
+        height: 70px;
+    }
+
+    .logos {
+       
+        height: 80px;
+        position: absolute;
+        z-index: 2;
+        margin-top: 5px;
+        margin-left: 50px !important;
+    }
+     .translate {
+        height: 40px;
+        position: absolute;
+        z-index: 0;
+        margin-left: 180px;
+
+    }
+
+    @media screen and (max-width: 750px) {
+        .logos {
+            margin-left: 10px;
+        }
+    }
+
+    .logo {
+        height: calc(100% - 10px);
+        margin: 5px;
+        margin-left: 10px;
+    }
+
+    .logo_simple {
+        height: calc(100% + 0px);
+        margin: 5px;
+    }
+
+    .icon {
+        padding: 0 14px;
+    }
+
+    .spacer {
+        flex: 1 1 auto;
+    }
+
+    button {
+        margin-right: 10px;
+        border-radius: 20px;
+    }
+
+    .bt {
+        font-size: 120%;
+        margin: 0 5px;
+    }
+}
+
+.display-none {
+    display: none;
+}
+
+.is-mobile .toolbar {
+    position: fixed;
+    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+    z-index: 5;
+}
+
+
+.sidenav-container {
+    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+    flex: 1;
+
+    mat-nav-list {
+        width: 50%;
+        min-width: 300px;
+        max-width: 400px;
+        margin-top: 5px;
+    }
+}
+
+.is-mobile .sidenav-container {
+    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+       `<body>` to be our scrolling element for mobile layouts. */
+    flex: 1 0 auto;
+}
+
+@media screen and (max-width: 460px) {
+
+    .logo {
+        height: calc(100% - 10px) !important;
+        margin: 0 !important;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+
+    .logo {
+        height: calc(100% - 30px) !important;
+    }
+
+}

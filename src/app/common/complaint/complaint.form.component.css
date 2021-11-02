@@ -1,0 +1,17 @@
+mat-form-field {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+p{
+    margin-bottom: 5px;
+}
+
+button {
+    min-width: 100px;
+}

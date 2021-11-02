@@ -1,0 +1,283 @@
+<div class="fillWindow">
+    <div class="head" >
+        <h3 class="jkl">
+            <span style="color: #F35624">get</span>
+            <span style="display: inline-block;">Plumber</span>
+        </h3>
+        <!-- <h3 class="jkp">
+            Plumbing service
+        </h3> -->
+    </div>
+    <div class="form">
+        <div class="main">
+            <div class="loading" *ngIf="loading">
+                <mat-spinner></mat-spinner>
+            </div>
+            <div class="fill">
+                <mat-progress-bar *ngIf="tree.length > 1
+                                    && tree[1] != 'aaaa'" class="pb" color="accent" mode="determinate" [value]=percentage>
+                </mat-progress-bar>
+                <!-- <h1 class="form-title">
+                    getPlumber
+                </h1> -->
+
+                <h1 class="current-title">
+                    {{ menu[getLast()]['title'] }}
+                </h1>
+                <p class="current-description">
+                    {{ menu[getLast()]['description'] }}
+                </p>
+
+                <div class="options" *ngIf="menu[getLast()]['options']">
+                    <mat-radio-group [(ngModel)]="choice" *ngIf="!menu[getLast()]['multiple']">
+                        <mat-list>
+                            <mat-list-item class="radio-list" style="display: block;"
+                                *ngFor="let list of menu[getLast()]['options']">
+                                <mat-radio-button class="radio-button" [value]="list.next">
+                                    {{ list.choice }}
+                                </mat-radio-button>
+                                <mat-divider></mat-divider>
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-radio-group>
+                </div>
+                <div *ngIf="choice == 'otherTanker'">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Please specify here</mat-label>
+                        <input matInput placeholder="" [formControl]="othersTanker">
+                        <mat-icon matSuffix>format_align_justify</mat-icon>
+                        <mat-error *ngIf="othersTanker.errors">
+                            This field is required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div *ngIf="choice == 'otherSewage'">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Please specify here</mat-label>
+                        <input matInput placeholder="" [formControl]="othersSewage">
+                        <mat-icon matSuffix>format_align_justify</mat-icon>
+                        <mat-error *ngIf="othersSewage.errors">
+                            This field is required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div *ngIf="choice == 'otherBasicInfo'">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Please specify here</mat-label>
+                        <input matInput placeholder="" [formControl]="others">
+                        <mat-icon matSuffix>format_align_justify</mat-icon>
+                        <mat-error *ngIf="others.errors">
+                            This field is required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div *ngIf="choice == 'otherUrgent'">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Please specify here</mat-label>
+                        <input matInput placeholder="" [formControl]="others">
+                        <mat-icon matSuffix>format_align_justify</mat-icon>
+                        <mat-error *ngIf="others.errors">
+                            This field is required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div *ngIf="choice == 'otherTime'">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Please specify here</mat-label>
+                        <input matInput placeholder="" [formControl]="othersTime">
+                        <mat-icon matSuffix>format_align_justify</mat-icon>
+                        <mat-error *ngIf="othersTime.errors">
+                            This field is required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <h1 class="display-phone" *ngIf="menu[getLast()]['msg']
+                                              && menu[getLast()]['msg'] == '8888'">
+                    8888
+                </h1>
+                <h1 class="display-phone" *ngIf="menu[getLast()]['msg']
+                                              && menu[getLast()]['msg'] == '906'">
+                    906
+                </h1>
+                <div [ngClass]="!(menu[getLast()]['show']
+                         && menu[getLast()]['show'] == 'photo picker')  ? 'none': ''">
+                    <image-upload url="{{imageUploadUrl}}{{id}}_{{images.length}}.dagi"
+                        (removed)="onImageRemoved($event)" (uploadFinished)="onUploadFinished($event)" [max]="5"
+                        [extensions]="['jpeg','png']">
+                    </image-upload>
+                </div>
+
+                <form [formGroup]="basicInfoForm" *ngIf="menu[getLast()]['show']
+                                                     && menu[getLast()]['show'] == 'basicInfo'"
+                    (ngSubmit)="next(menu[getLast()]['next'])">
+
+                    <!-- FULL NAME -->
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            Full Name
+                        </mat-label>
+                        <input matInput id="fullName" type="text" formControlName="fullName" placeholder="Full Name"
+                            required>
+                        <mat-icon matPrefix>person_outline</mat-icon>
+                        <mat-hint>
+                            Please enter your full name here
+                        </mat-hint>
+                        <mat-error *ngIf="basicInfoForm.controls.fullName.errors
+                                    && !basicInfoForm.controls.fullName.errors.required
+                                    && basicInfoForm.controls.fullName.errors.minlength">
+                            Please enter a
+                            <strong>
+                                valid
+                            </strong>
+                            Full Name
+                        </mat-error>
+                        <mat-error *ngIf="basicInfoForm.controls.fullName.errors
+                                    && basicInfoForm.controls.fullName.errors.required">
+                            Full Name is
+                            <strong>
+                                required
+                            </strong>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <!-- EMAIL -->
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            Email
+                        </mat-label>
+                        <input matInput id="email" type="email" formControlName="email" placeholder="Email" required>
+                        <mat-icon matPrefix>alternate_email</mat-icon>
+                        <mat-hint>
+                            Please enter your Email address
+                        </mat-hint>
+                        <mat-error *ngIf="basicInfoForm.controls.email.errors
+                                    && !basicInfoForm.controls.email.errors.required
+                                    && basicInfoForm.controls.email.errors.email">
+                            Please enter a
+                            <strong>
+                                valid
+                            </strong>
+                            Email address
+                        </mat-error>
+                        <mat-error *ngIf="basicInfoForm.controls.email.errors
+                                    && basicInfoForm.controls.email.errors.required">
+                            Email address is
+                            <strong>
+                                required
+                            </strong>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <!-- PHONE -->
+                    <mat-form-field appearance="outline">
+                        <mat-label>
+                            Phone Number
+                        </mat-label>
+                        <input matInput id="phone" type="phone" formControlName="phone" placeholder="Phone" required>
+                        <mat-icon matPrefix>phone</mat-icon>
+                        <mat-hint>
+                            Please enter your Phone number
+                        </mat-hint>
+                        <mat-error *ngIf="basicInfoForm.controls.phone.errors
+                                    && !basicInfoForm.controls.phone.errors.required
+                                    && (basicInfoForm.controls.phone.errors.minlength
+                                    || basicInfoForm.controls.phone.errors.maxlength
+                                    || basicInfoForm.controls.phone.errors.pattern)">
+                            Please enter a
+                            <strong>
+                                valid
+                            </strong>
+                            Phone number
+                        </mat-error>
+                        <mat-error *ngIf="basicInfoForm.controls.phone.errors
+                                    && basicInfoForm.controls.phone.errors.required">
+                            Phone number is
+                            <strong>
+                                required
+                            </strong>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <button style="display: none;" type="submit" [disabled]="!basicInfoForm.valid">
+                        register
+                    </button>
+                </form>
+                <div *ngIf="menu[getLast()]['show']
+                         && menu[getLast()]['show'] == 'location'">
+                    <ngx-place-picker class="map" (locationChanged)="this.logLocationChange($event)"
+                        [enablePlacesSearch]="true" [enableCurrentLocation]="true">
+                    </ngx-place-picker>
+                </div>
+
+                <div *ngIf="getLast() == 'finish'">
+                    <h2>Thank you for choosing getBalemuya</h2>
+                    <p class="story-teller">Dear <strong>{{ name }}</strong>Your are ordering... </p>
+                    <mat-chip-list>
+                      <mat-chip color="primary" selected *ngFor="let order of orders">{{ order }}</mat-chip>
+                  </mat-chip-list>
+                    <div *ngIf="tree.length > 1 && tree[1] == 'aaab'">
+                        <div class="display-image" *ngFor="let image of imageUrls">
+                            <div>
+                                <img src="{{image}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <h2>your order id is,</h2>
+                    <h1 class="bigger primary-color">{{ id }}</h1>
+                    <p class="story-teller">To submit your order, press on the finish button below. </p>
+                    <p class="story-teller">One of our stuff will contact you as soon as possible.</p>
+                </div>
+
+                <div class="error">
+                    <p #errorMsg></p>
+                </div>
+
+            </div>
+            <div class="action">
+                <span class="spacer"></span>
+                <button mat-raised-button color="warn" (click)="convert()" *ngIf="false">
+                    Convert
+                    <span class="spacer"></span>
+                </button>
+                <span class="spacer"></span>
+                <button mat-stroked-button color="primary" style="margin-right: 10px;" *ngIf="tree.length > 1"
+                    (click)="back()">Back</button>
+                <button mat-raised-button color="primary" *ngIf="menu[getLast()]['options']
+                                                              && !menu[getLast()]['multiple']" (click)="next(choice)">
+                    Next
+                </button>
+                <button mat-raised-button color="primary" *ngIf="menu[getLast()]['options']
+                                                              && menu[getLast()]['multiple']" (click)="next('part')">
+                    Next
+                </button>
+                <button mat-raised-button color="primary" *ngIf="menu[getLast()]['next']"
+                    (click)="next(menu[getLast()]['next'])">
+                    Next
+                </button>
+                <button mat-raised-button color="primary" *ngIf="menu[getLast()]['show']
+                                                              && menu[getLast()]['show'] == 'location'"
+                    (click)="finish()">
+                    Confirm
+                </button>
+                <button mat-raised-button color="primary" *ngIf="getLast() == 'finish'" (click)="end()">
+                    Finish
+                </button>
+
+            </div>
+        </div>
+        <div class="ad">
+            <div class="asdf">
+                <!-- <h3 class="jkl">
+                    <span>get</span>
+                    <span style="display: inline-block;">Clean</span>
+                </h3> -->
+
+                <h3 class="jkp">
+
+
+                </h3>
+            </div>
+        </div>
+
+    </div>
+</div>

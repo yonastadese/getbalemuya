@@ -1,0 +1,76 @@
+<h1 mat-dialog-title>Complaint Detail</h1>
+<div mat-dialog-content>
+  <div class="basic">
+    <p>Order Id <span class="id primary-color">{{complaint.orderID}}</span></p>
+    <p class="smaller">Submited On, {{complaint.created_at.toMillis() | date:'yyyy/MM/dd h:mm:ss a'}}</p>
+  </div>
+  <mat-divider class="alltw"></mat-divider>
+  <div class="order">
+    <h2>Complaint</h2>
+    <span>{{complaint.complaint}}</span>
+  </div>
+
+</div>
+<!-- <div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button cdkFocusInitial>Ok</button>
+</div> -->
+
+<style>
+  p {
+    margin-bottom: 0;
+  }
+
+  h1,
+  h2 {
+    margin-bottom: 5px !important;
+  }
+
+  .id {
+    font-weight: 500;
+    font-size: 120%;
+  }
+
+  .smaller {
+    font-size: 90%;
+    opacity: 0.7;
+  }
+
+  .basic,
+  .order,
+  .contact {
+    margin: 15px 0;
+  }
+
+  .contact>p {
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 5px;
+  }
+
+  .light {
+    display: block;
+    font-size: 70%;
+    opacity: 0.7;
+  }
+
+  .alltw {
+    margin: 0 -24px;
+  }
+
+  .display-image {
+    height: 100px;
+    width: 100px;
+    display: inline-flex;
+    align-items: center;
+    background-color: #1112;
+    margin: 5px;
+  }
+
+  .display-image>a>img {
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0 auto;
+  }
+
+</style>

@@ -1,0 +1,46 @@
+.page {
+    min-height: 100vh;
+    width: 100%;
+    padding: 25px;
+}
+.fill {
+    width: 100%;
+    border-radius: 0;
+}
+.fill, mat-list-item {
+    height: 50px !important;
+}
+
+mat-sidenav {
+    width: 200px;
+}
+mat-list {
+    margin-top: 50px;
+}
+mat-icon {
+    margin-right: 5px;
+}
+.white-bg {
+    background-color: white;
+}
+
+@media only screen and (max-width: 600px) {
+    .page {
+        padding: 10px;
+    }
+}
+
+mat-toolbar {
+    background: none;
+    padding: 0;
+}
+
+.menu {
+    margin-right: 0;
+    position: relative;
+    top: -1px;
+}
+
+.menu-btn {
+    margin-right: 10px;
+}

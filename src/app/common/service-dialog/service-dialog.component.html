@@ -1,0 +1,44 @@
+<div class="head">
+  <h3 class="jkl">
+    <span style="color: #F35624">get</span>
+    <span style="display: inline-block;">{{ title }}</span>
+  </h3>
+  <img src="/assets/{{title.toLowerCase()}}-top.png" alt="">
+  <button class="cc" mat-mini-fab color="primary" (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<div class="fu">
+  <div class="content">
+    <div class="main" [ngClass]="goCall ? 'left': 'no-left'">
+      <h2 mat-dialog-title>How do you want to proceed?</h2>
+      <div mat-dialog-content>
+        <div>
+          <div class="rc" *ngFor="let item of menu" (click)="goTo(item.id)" matRipple>
+            <div class="icon">
+              <mat-icon>{{ item.icon }}</mat-icon>
+            </div>
+            <div class="name"><span>{{ item.name }}</span></div>
+          </div>
+        </div>
+        <!-- <div *ngIf="title == 'Security'">
+          <div class="rc" *ngFor="let item of mwp" (click)="goTo(item.id)" matRipple>
+            <div class="icon">
+              <mat-icon>{{ item.icon }}</mat-icon>
+            </div>
+            <div class="name"><span>{{ item.name }}</span></div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+    <div class="call" [ngClass]="goCall ? 'left': ''">
+      <mat-toolbar>
+        <button mat-icon-button (click)="goCall = false">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <h1>Call us on...</h1>
+      </mat-toolbar>
+      <p class="tel">8888</p>
+    </div>
+  </div>
+</div>

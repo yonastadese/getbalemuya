@@ -1,0 +1,23 @@
+mat-toolbar-row {
+    background-color: white;
+    box-shadow: 1px 0.5px 5px 1px #eaeaea;
+    height: 70px;
+}
+
+.icon {
+    padding: 0 14px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+button {
+    margin-right: 10px;
+    border-radius: 20px;
+}
+
+.bt {
+    font-size: 120%;
+    margin: 0 5px;
+}

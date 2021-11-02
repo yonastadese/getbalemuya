@@ -1,0 +1,103 @@
+@import "~@angular/material/theming";
+@import 'custom-theme.scss';
+
+.form-job-focus>div>.mat-form-field-flex,
+.form-address-focus>div>.mat-form-field-flex {
+    border-bottom: mat-color($getbalemuya-primary) solid 2px;
+    // border-bottom: red solid 2px;
+}
+
+.title p {
+    // display: inline-block;
+    // padding: 10px;
+    // background-color: #1119;
+}
+
+footer {
+    background-color: mat-color($getbalemuya-primary);
+}
+
+.widget li a {
+    color: mat-color($getbalemuya-accent);
+}
+
+.widget .btn {
+    background-color: mat-color($getbalemuya-accent);
+}
+
+ul.social-footer2 li a:hover {
+    background-color: mat-color($getbalemuya-accent);
+}
+
+.form-job>div>.mat-form-field-flex,
+.form-address>div>.mat-form-field-flex {
+    /* border: #ccc solid 2px; */
+    border: #3f51b5aa solid 2px;
+}
+
+.form-job>div>.mat-form-field-flex {
+    background-color: #3f51b533;
+}
+
+mat-list-item {
+    height: 40px !important;
+
+    .mat-list-item-content {
+        height: 40px !important;
+    }
+}
+
+mat-radio-button {
+    width: 100%;
+
+    .mat-radio-label {
+        padding: 10px 0 !important;
+        margin: 0 !important;
+    }
+}
+
+mat-list-item{
+    mat-checkbox {
+        width: 100%;
+        height: 40px;
+        .mat-checkbox-layout {
+            display: block;
+            width: 100%;
+            margin: 0 !important;
+            padding: 8px 0;
+        }
+    }
+}
+
+.mat-chip-list-wrapper {
+    margin-bottom: 15px !important;
+}
+
+.chips-cont {
+    .mat-chip-list-wrapper {
+        margin: 15px;
+    }
+}
+
+th{
+    button{
+        padding: 0 20px !important;
+    }
+    
+}
+
+.menu-list {
+    .mat-list-item-content, button {
+        padding: 0 !important;
+    }
+    button {
+        padding-left: 30px !important;
+        text-align: left;
+    }
+}
+
+.service-dialog-container {
+    mat-dialog-container {
+        overflow: visible !important;
+    }
+}

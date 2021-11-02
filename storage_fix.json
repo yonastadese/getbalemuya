@@ -1,0 +1,20 @@
+[
+    {
+      "origin": ["http://localhost:4200"],
+      "responseHeader": ["Content-Type"],
+      "method": ["POST"],
+      "maxAgeSeconds": 3600
+    },
+    {
+      "origin": ["http://getbalemuya.com"],
+      "responseHeader": ["Content-Type"],
+      "method": ["POST"],
+      "maxAgeSeconds": 3600
+    },
+    {
+      "origin": ["http://www.getbalemuya.com"],
+      "responseHeader": ["Content-Type"],
+      "method": ["POST"],
+      "maxAgeSeconds": 3600
+    }
+]

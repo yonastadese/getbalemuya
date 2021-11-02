@@ -1,0 +1,59 @@
+<h1 mat-dialog-title>File a complaint</h1>
+<div mat-dialog-content>
+    <form [formGroup]="complaintForm" (ngSubmit)="send()">
+        <!-- ORDER ID -->
+        <p>First fill your Order id here.</p>
+        <mat-form-field appearance="outline">
+            <mat-label>
+                Order ID
+            </mat-label>
+            <input matInput type="text" formControlName="orderID" placeholder="Order ID" required>
+            <mat-hint>
+                Enter your Order Identification
+            </mat-hint>
+            <mat-error *ngIf="complaintForm.controls.orderID.errors
+                        && !complaintForm.controls.orderID.errors.required
+                        && (complaintForm.controls.orderID.errors.minlength
+                        || complaintForm.controls.orderID.errors.maxlength)">
+                Please enter a
+                <strong>
+                    valid
+                </strong>
+                Order ID
+            </mat-error>
+            <mat-error *ngIf="complaintForm.controls.orderID.errors
+                    && complaintForm.controls.orderID.errors.required">
+                Order ID is
+                <strong>
+                    required
+                </strong>
+            </mat-error>
+        </mat-form-field>
+        <!-- COMPLAINT -->
+        <p>What would you like to complain about</p>
+        <mat-form-field appearance="outline">
+            <mat-label>
+                Complaint
+            </mat-label>
+            <textarea matInput formControlName="complaint" placeholder="Complaint" required>
+            </textarea>
+            <mat-hint>
+                Enter your Complaint here
+            </mat-hint>
+            <mat-error *ngIf="complaintForm.controls.complaint.errors
+                    && complaintForm.controls.complaint.errors.required">
+                Please fill your complaint.
+            </mat-error>
+        </mat-form-field>
+        <button style="display: none;" type="submit" [disabled]="!complaintForm.valid">
+            send
+        </button>
+    </form>
+
+</div>
+<div mat-dialog-actions>
+    <button mat-button color="warn" (click)="close()">Close</button>
+    <span class="spacer"></span>
+    <button mat-raised-button color="primary" cdkFocusInitial (click)="send()"
+        [disabled]="!complaintForm.valid">Send</button>
+</div>

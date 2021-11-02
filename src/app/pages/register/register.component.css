@@ -1,0 +1,43 @@
+.all {
+    min-height: 100vh;
+    padding: 20px 0;
+}
+.window {
+    width: 100%;
+    height: 100vh;
+    display: table;
+}
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+.center {
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+mat-form-field  {
+    width: 100%;
+}
+.logo {
+    height: calc(100% - 10px);
+    max-height: 50px;
+    margin: 5px;
+}
+mat-card {
+    padding: 30px 25px;
+}
+
+.alt {
+    margin-top: 10px;
+}
+
+mat-divider {
+    padding: 10px 0;
+}
+
+
+mat-icon {
+    margin-right: 10px;
+}

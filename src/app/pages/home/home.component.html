@@ -1,0 +1,51 @@
+<!-- <app-main-toolbar></app-main-toolbar> -->
+<div class="top">
+    <div class="header">
+        <div class="middle">
+            <div class="title">
+                <h1>
+                    <span class="accent-color">get</span>Balemuya</h1>
+                <!-- <h1>እዚህ በቀላሉ ያገኛሉ</h1> -->
+                <p class="cursive"> Ready to serve</p>
+            </div>
+            <!-- <div class="search">
+                <form class="form">
+                    <mat-form-field (focusin)="jobHover=true" (focusout)="jobHover=false" class="form-job"
+                        [ngClass]="{'form-job-focus' : jobHover==true }">
+                        <input type="text" placeholder="ምን አይነት አገልግሎት ይፈልጋሉ?" aria-label="Number" matInput
+                            [formControl]="myControl" [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete">
+                            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                {{ option }}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                    <button mat-raised-button color="primary" class="search-job" (click)="openDialog(myControl.value)">
+                        <span *ngIf="!smallerQuery.matches">Search</span>
+                        <mat-icon *ngIf="smallerQuery.matches">search</mat-icon>
+                    </button>
+                </form>
+            </div> -->
+        </div>
+    </div>
+    <div class="categories">
+        <ul class="scrolling-wrapper">
+            <li class="card" *ngFor="let item of menu">
+                <div class="card-child">
+                    <img src="{{ item.image }}" (click)="openDialog(item.name)">
+                    <!-- <img src="{{ item.image }}" routerLinkActive="active" routerLink="/{{item.url}}"> -->
+                    <span class="card-title">{{ item.title }}</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+
+<app-home-clients></app-home-clients>
+<app-home-testimonies></app-home-testimonies>
+
+
+
+<!-- <app-main-footer></app-main-footer> -->

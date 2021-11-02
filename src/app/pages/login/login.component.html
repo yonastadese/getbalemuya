@@ -1,0 +1,104 @@
+<div class="all">
+    <div class="window">
+        <div class="middle">
+            <div class="center">
+                <mat-card class="mat-elevation-z8" style="overflow: hidden;">
+                    <mat-progress-bar class="progress" mode="query" *ngIf="isLoading"></mat-progress-bar>
+                    <img class="logo" src="/assets/get_logo.png" routerLinkActive="active" routerLink="/" />
+                    <div [ngClass]="!isLoading ? 'none': 'mask'"></div>
+                    <mat-card-header>
+                        <mat-card-title  style="margin: 0 -16px;">
+                            <h1>Sign In</h1>
+                        </mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <form [formGroup]="loginForm" (ngSubmit)="login()">
+                            <!-- EMAIL -->
+                            <mat-form-field appearance="outline">
+                                <mat-label>
+                                    Email
+                                </mat-label>
+                                <input matInput id="email" type="email" formControlName="email" placeholder="Email"
+                                    #email required>
+                                <mat-icon matPrefix>alternate_email</mat-icon>
+                                <mat-hint>
+                                    Enter your Email address
+                                </mat-hint>
+                                <mat-error *ngIf="loginForm.controls.email.errors
+                                            && !loginForm.controls.email.errors.required
+                                            && !loginForm.controls.email.errors.email
+                                            && loginForm.controls.email.errors.emailDontExists">
+                                    The email your entered doesn't exist. Please make sure you are an admin.
+                                </mat-error>
+                                <mat-error *ngIf="loginForm.controls.email.errors
+                                            && !loginForm.controls.email.errors.required
+                                            && loginForm.controls.email.errors.email">
+                                    Please enter a
+                                    <strong>
+                                        valid
+                                    </strong>
+                                    Email address
+                                </mat-error>
+                                <mat-error *ngIf="loginForm.controls.email.errors
+                                            && loginForm.controls.email.errors.required">
+                                    Email address is
+                                    <strong>
+                                        required
+                                    </strong>.
+                                </mat-error>
+                            </mat-form-field>
+                            <!-- PASSWORD -->
+                            <mat-form-field appearance="outline">
+                                <mat-label>
+                                    Password
+                                </mat-label>
+                                <input matInput id="password" [type]="showPassword ? 'text' : 'password'"
+                                    formControlName="password" placeholder="Password" required>
+                                <mat-icon matPrefix>lock</mat-icon>
+                                <mat-icon class="cursorPointer" matSuffix (click)="showPassword = !showPassword">
+                                    {{showPassword ? 'visibility' : 'visibility_off'}}</mat-icon>
+                                <mat-hint>
+                                    Enter your password
+                                </mat-hint>
+                                <mat-error *ngIf="loginForm.controls.password.errors
+                                            && !loginForm.controls.password.errors.required
+                                            && !loginForm.controls.password.errors.minlength
+                                            && loginForm.controls.password.errors.wrongPassword">
+                                    Your password is incorrect.
+                                </mat-error>
+                                <mat-error *ngIf="loginForm.controls.password.errors
+                                            && !loginForm.controls.password.errors.required
+                                            && loginForm.controls.password.errors.minlength">
+                                    Your password must be
+                                    <strong>
+                                        more than 8 characters
+                                    </strong>
+                                </mat-error>
+                                <mat-error *ngIf="loginForm.controls.password.errors
+                                            && loginForm.controls.password.errors.required">
+                                    Password is
+                                    <strong>
+                                        required
+                                    </strong>
+                                </mat-error>
+                            </mat-form-field>
+                            <button style="display: none;" type="submit" [disabled]="!loginForm.valid">
+                                login
+                            </button>
+                        </form>
+                    </mat-card-content>
+                    <mat-card-actions align="end">
+                        <button mat-button type="button" color="accent" routerLink='/forgotpassword'
+                            routerLinkActive="active-route">
+                            Forgot Password
+                        </button>
+                        <span fxFlex class="spacer"></span>
+                        <button mat-raised-button type="submit" (click)="login()" color="primary">
+                            Sign In
+                        </button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

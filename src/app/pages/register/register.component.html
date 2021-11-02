@@ -1,0 +1,160 @@
+<div class="all">
+    <div class="window">
+        <div class="middle">
+            <div class="center">
+                <mat-card class="mat-elevation-z8">
+                    <!-- <h1 routerLinkActive="active" routerLink="/">Logo here</h1> -->
+                    <img class="logo" src="/assets/get_logo.png" routerLinkActive="active" routerLink="/" />
+                    <div class="mask" [ngClass]="!isLoading ? 'none': ''"></div>
+                    <mat-card-header>
+                        <mat-card-title>
+                            <h1>Register as a Professional</h1>
+                        </mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <form [formGroup]="registerForm" (ngSubmit)="register()">
+                            <!-- COMPANY/INDIVIDUAL -->
+                            <p style="display: flex;">
+                                <span style="line-height: 50px; padding-right: 5px;">How do you want to join:</span>
+                                <mat-button-toggle-group class="spacer" name="fontStyle"
+                                    formControlName="companyIndividual">
+                                    <mat-button-toggle style="width: 50%;" value="Company">Company</mat-button-toggle>
+                                    <mat-button-toggle style="width: 50%;" value="Individual">Individual
+                                    </mat-button-toggle>
+                                </mat-button-toggle-group>
+                            </p>
+                            <!-- EMAIL -->
+                            <mat-form-field appearance="outline">
+                                <mat-label>
+                                    Email
+                                </mat-label>
+                                <input matInput type="email" formControlName="email" placeholder="Email" required>
+                                <mat-icon matPrefix>alternate_email</mat-icon>
+                                <mat-hint>
+                                    Please enter your email address here
+                                </mat-hint>
+                                <mat-error *ngIf="registerForm.controls.email.errors
+                                            && !registerForm.controls.email.errors.required
+                                            && registerForm.controls.email.errors.email">
+                                    Please enter a
+                                    <strong>
+                                        valid
+                                    </strong>
+                                    Email address
+                                </mat-error>
+                                <mat-error *ngIf="registerForm.controls.email.errors
+                                            && registerForm.controls.email.errors.required">
+                                    Email address is
+                                    <strong>
+                                        required
+                                    </strong>
+                                </mat-error>
+                            </mat-form-field>
+                            <!-- FULL NAME -->
+                            <mat-form-field appearance="outline">
+                                <mat-label>
+                                    Full Name
+                                </mat-label>
+                                <input matInput type="text" formControlName="fullName" placeholder="Full Name" required>
+                                <mat-icon matPrefix>account_circle</mat-icon>
+                                <mat-hint>
+                                    Please enter your full name here
+                                </mat-hint>
+                                <mat-error *ngIf="registerForm.controls.fullName.errors
+                                            && registerForm.controls.fullName.errors.required">
+                                    Full Name is
+                                    <strong>
+                                        required
+                                    </strong>
+                                </mat-error>
+                            </mat-form-field>
+                            <!-- PHONE NUMBER -->
+                            <mat-form-field appearance="outline">
+                                <mat-label>
+                                    Phone Number
+                                </mat-label>
+                                <input matInput type="phone" formControlName="phone" placeholder="Phone Number"
+                                    required>
+                                <mat-icon matPrefix>phone</mat-icon>
+                                <mat-hint>
+                                    Please enter your Phone number
+                                </mat-hint>
+                                <mat-error *ngIf="registerForm.controls.phone.errors
+                                            && !registerForm.controls.phone.errors.required
+                                            && (registerForm.controls.phone.errors.minlength
+                                            || registerForm.controls.phone.errors.maxlength
+                                            || registerForm.controls.phone.errors.pattern)">
+                                    Please enter a
+                                    <strong>
+                                        valid
+                                    </strong>
+                                    Phone number
+                                </mat-error>
+                                <mat-error *ngIf="registerForm.controls.phone.errors
+                                            && registerForm.controls.phone.errors.required">
+                                    Phone number is
+                                    <strong>
+                                        required
+                                    </strong>
+                                </mat-error>
+                            </mat-form-field>
+                            <!-- PROFESSION -->
+                            <mat-form-field appearance="outline">
+                                <mat-label>
+                                    Profession
+                                </mat-label>
+                                <mat-select formControlName="profession">
+                                    <mat-option *ngFor="let prof of professions" [value]="prof">
+                                        {{prof}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-icon matPrefix>work_outline</mat-icon>
+                                <mat-hint>
+                                    What is your profession?
+                                </mat-hint>
+                                <mat-error *ngIf="registerForm.controls.profession.errors
+                                            && registerForm.controls.profession.errors.required">
+                                    Profession is
+                                    <strong>
+                                        required
+                                    </strong>
+                                </mat-error>
+                            </mat-form-field>
+                            <!-- EXPERIANCE -->
+                            <mat-form-field appearance="outline">
+                                <mat-label>
+                                    Experiance
+                                </mat-label>
+                                <mat-select formControlName="experiance">
+                                    <mat-option *ngFor="let exp of experiances" [value]="exp">
+                                        {{exp}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-icon matPrefix>date_range</mat-icon>
+                                <mat-hint>
+                                    What's your professional experiace?
+                                </mat-hint>
+                                <mat-error *ngIf="registerForm.controls.profession.errors
+                                            && registerForm.controls.profession.errors.required">
+                                    Experiance is
+                                    <strong>
+                                        required
+                                    </strong>
+                                </mat-error>
+                            </mat-form-field>
+                            <button style="display: none;" type="submit" [disabled]="!registerForm.valid">
+                                login
+                            </button>
+                        </form>
+                    </mat-card-content>
+                    <mat-card-actions align="end">
+                        <button mat-raised-button type="submit" (click)="register()" color="primary"
+                            [disabled]="!registerForm.valid">
+                            Register
+                        </button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
