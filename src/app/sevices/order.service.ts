@@ -54,7 +54,7 @@ export class OrderService {
           + 'Phone Number: <b>' + order.contact.phone + '</b>\n\n'
           + '#order'
       };
-      const telegram = '1286244993:AAFRuzJQ1QjyH94JMjrcBBOhry93sHRBnXw';
+      
       this.emailService.send(email, telegram)
     }).catch((error) => {
       this.setMsgStatus(error.message);
